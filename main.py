@@ -9,7 +9,7 @@ print("****Welcome To Python Scheduler****\n")
 
 #converts a list to string
 def listToString(s):  
-    # initialize an empty string 
+    '''Convert list s and return a string'''
     str1 = " " 
     return (str1.join(s)) 
 
@@ -88,7 +88,9 @@ createWindow = gui.Window('Task Creation', deployCreateLayout())
 
 #checks if the days correspond with the correct month range 
 def taskConfirmation():
+    '''if start day is in range of calendar month for the start year check the end day'''
     if values['-sday-'] in range(1,(calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'],'%B').tm_mon))[1]+1):
+        '''if end day is in the range of calendar month for the end year return: True'''
         if values['-eday-'] in range(1,(calendar.monthrange(values['-eyear-'], time.strptime(values['-emonth-'],'%B').tm_mon))[1]+1):
             #print('your dates work correctly')
             return True
