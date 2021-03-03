@@ -103,14 +103,13 @@ window = gui.Window("Py Scheduler", layout, alpha_channel=0.7)
 #window event loop
 while True:
     event, values = window.read(timeout=100)
-    if event == "Exit" or event == gui.WIN_CLOSED:
+    if event in ("Exit", gui.WIN_CLOSED):
         break
     if event == "Create":
         while True:
             event, values = createWindow.read()
-            if event == "Cancel" or event == gui.WIN_CLOSED:
+            if event in ("Cancel", gui.WIN_CLOSED):
                 createWindow.close()
-                print('close')
                 createWindow = gui.Window('Task Creation', deployCreateLayout())
                 break
             if event == "Done":
