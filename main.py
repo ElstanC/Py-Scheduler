@@ -16,7 +16,7 @@ def listToString(s):
 
 #updates currentDate to the current date
 def currentDateUpdate():
-    """Updates the currentDate to the Local datetime now function."""
+    """Update the currentDate to the Local datetime now function."""
     currentDate = datetime.datetime.now()
     return currentDate
 
@@ -26,7 +26,7 @@ currentDate = currentDateUpdate()
 
 #main clock loop function
 def clockLoop():
-    """A repeating loop for the Main Clock Loop.
+    """Repeating loop for the main clock.
     This will constantly update the current time and datetime objects
     to the current local time
     
@@ -67,7 +67,7 @@ def compareLoop():
         
 #compares task end time to current time  
 def timeCompare(timeInput):
-    """Compares a task end time to the current time if the end date has passed it will return true.
+    """Compare a task end time to the current time if the end date has passed it will return true.
 
     Args:
         timeInput (datetime.obj): date time object input for comparison
@@ -82,7 +82,7 @@ def timeCompare(timeInput):
 
 #prints all tasks
 def printTasks():
-    """A simple function that will print all the tasks in the taskList."""
+    """Output all the tasks in the taskList."""
     for item in task.taskList:
         print(item.__repr__()+"\n")
         

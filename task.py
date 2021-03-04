@@ -4,7 +4,7 @@ taskList = []
 class Task:
     """A class that represents a Task."""    
     def __init__(self, name, desc, createdDate, startDate, endDate):
-        """A constructor that creates Tasks.
+        """Constructor that creates Tasks.
 
         Args:
             name (str): name of the task
