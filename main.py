@@ -7,11 +7,11 @@ import calendar
 print("****Welcome To Python Scheduler****\n")
 
 
-#converts a list to string
-def listToString(s):  
+ # converts a list to string
+def listToString(s):
     """Convert list s and return a string."""
-    str1 = " " 
-    return (str1.join(s)) 
+    str1 = " "
+    return (str1.join(s))
 
 
 #updates currentDate to the current date
@@ -22,7 +22,10 @@ def currentDateUpdate():
 
 #initial variables
 t = time.time()
+
+
 currentDate = currentDateUpdate()
+
 
 #main clock loop function
 def clockLoop():
@@ -51,7 +54,7 @@ def createTask(name, desc, startDate, endDate):
         desc (str): description for the task
         startDate (datetime.obj): start date for the task
         endDate (datetime.obj): end date for the task
-    """    
+    """
     task.taskList.append(task.Task(name, desc, t, startDate, endDate))
 
 #loops through all tasks if timeCompare == true Deletes task
@@ -59,13 +62,13 @@ def compareLoop():
     """Loop through all the tasks in taskList.
     if timeCompare() returns true then the end date has passed
     and the task from taskList will be removed
-    """    
+    """
     for item in task.taskList:
         if timeCompare(item):
             print('Removing ', item)
             task.taskList.remove(item)
         
-#compares task end time to current time  
+#compares task end time to current time
 def timeCompare(timeInput):
     """Compare a task end time to the current time if the end date has passed it will return true.
 
@@ -74,7 +77,7 @@ def timeCompare(timeInput):
 
     Returns:
         boolean: returns true if currentDateUpdate() > timeInput.endDate
-    """    
+    """
     if currentDateUpdate() > timeInput.endDate:
         return True
     else:
@@ -124,11 +127,12 @@ def deployCreateLayout():
 #Task creation createWindow
 createWindow = gui.Window('Task Creation', deployCreateLayout())
 
-#checks if the days correspond with the correct month range 
+
+#checks if the days correspond with the correct month range
 def taskConfirmation():
     """If start day is in range of calendar month for the start year check the end day.
     Returns: True
-    """    
+    """
     if values['-sday-'] in range(1, (calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'], '%B').tm_mon))[1]+1):
         """if end day is in the range of calendar month for the end year
         Returns: True
@@ -144,6 +148,7 @@ def taskConfirmation():
 #main mainWindow creation for Py Scheduler
 mainWindow = gui.Window("Py Scheduler", layout)
 
+
 #mainWindow event loop
 while True:
     """Main mainWindow event loop
@@ -153,7 +158,7 @@ while True:
         on event Done: create a task using inputed data values from user
         on event Cancel or Window Closes: stop task creation and close createWindow
     on event Manage: View all tasks and allow Editing
-    """    
+    """
     event, values = mainWindow.read(timeout=100)
     if event in ("Exit", gui.WIN_CLOSED):
         break

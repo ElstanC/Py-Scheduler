@@ -13,7 +13,7 @@ class Task:
             createdDate (datetime.obj): date the task object was created
             startDate (datetime.obj): date the task will start
             endDate (datetime.obj): date the task will end
-        """        
+        """
         self.name = name
         self.desc = desc
         self.createdDate = createdDate
@@ -35,7 +35,7 @@ class Task:
         return self.startDate.strftime('%Y-%m-%d %H:%M %Z')
     def end(self):
         """Return the end date of the self obj as a string."""
-        return self.endDate.strftime('%Y-%m-%d %H:%M %Z')    
+        return self.endDate.strftime('%Y-%m-%d %H:%M %Z')
 
 def timeFormat(input):
     """Format the inputed datetime.obj to a string.
@@ -45,6 +45,6 @@ def timeFormat(input):
 
     Returns:
         str: returns the datetime.obj as a string
-    """    
+    """
     out =  time.strftime('%Y-%m-%d %H:%M %Z', time.localtime(input))
     return out
