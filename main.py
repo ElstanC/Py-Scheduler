@@ -140,7 +140,7 @@ def taskConfirmation():
         print('your start date is wrong')
         return False
 #main mainWindow creation for Py Scheduler
-mainWindow = gui.Window("Py Scheduler", layout, alpha_channel=0.7)
+mainWindow = gui.Window("Py Scheduler", layout)
 
 #mainWindow event loop
 while True:
