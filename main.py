@@ -16,6 +16,7 @@ def listToString(s):
 
 #updates currentDate to the current date
 def currentDateUpdate():
+    '''Updates the currentDate to the Local datetime now function'''
     currentDate = datetime.datetime.now()
     return currentDate
 
@@ -25,6 +26,15 @@ currentDate = currentDateUpdate()
 
 #main clock loop function
 def clockLoop():
+    '''
+    Main clock loop
+    t : current time variable
+
+    Returns
+    -------
+    t : the currently updated time
+
+    '''
     t = time.time()
     currentDateUpdate()
     compareLoop()
@@ -32,18 +42,39 @@ def clockLoop():
 
 #creates a new task and adds it to taskList
 def createTask(name, desc, startDate, endDate):
+    """Creates a new task.py object and adds it to taskList
+
+    Args:
+        name (str): name for the task
+        desc (str): description for the task
+        startDate (datetime.obj): start date for the task
+        endDate (datetime.obj): end date for the task
+    """    
     task.taskList.append(task.Task(name, desc, t, startDate, endDate))
 
 #loops through all tasks if timeCompare == true Deletes task
 def compareLoop():
+    """loops through all the tasks in taskList
+    if timeCompare() returns true then the end date has passed
+    and the task from taskList will be removed
+    """    
     for item in task.taskList:
         if timeCompare(item):
             print('Removing ', item)
             task.taskList.remove(item)
         
 #compares task end time to current time  
-def timeCompare(time2):
-    if currentDateUpdate() > time2.endDate:
+def timeCompare(timeInput):
+    """Compares a task end time to the current time if the end date has passed
+    it will return true
+
+    Args:
+        timeInput (datetime.obj): date time object input for comparison
+
+    Returns:
+        boolean: returns true if currentDateUpdate() > timeInput.endDate
+    """    
+    if currentDateUpdate() > timeInput.endDate:
         return True
     else:
         return False
@@ -64,6 +95,11 @@ gui.Button('Manage')]]
 
 #name and description buttons
 def deployCreateLayout():
+    """Layout for the Create Task Window
+
+    Returns:
+        pysimpleGuiLayout: layout
+    """    
     createLayout = [[gui.Text('Name:'), gui.Input(size=(20,1), key='-name-')],
     [gui.Text('Desc: '), gui.Multiline(size=(47,4), key='-desc-')],
     #start Date buttons
@@ -83,14 +119,18 @@ def deployCreateLayout():
     [gui.Button("Cancel", pad=((20,20),(20,20)),size=(5,2)), gui.Button('Done', size=(5,2))]]
     return createLayout
 
-#Task creation window
+#Task creation createWindow
 createWindow = gui.Window('Task Creation', deployCreateLayout())
 
 #checks if the days correspond with the correct month range 
 def taskConfirmation():
-    '''if start day is in range of calendar month for the start year check the end day'''
+    """if start day is in range of calendar month for the start year check the end day
+    Returns: True
+    """    
     if values['-sday-'] in range(1,(calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'],'%B').tm_mon))[1]+1):
-        '''if end day is in the range of calendar month for the end year return: True'''
+        '''if end day is in the range of calendar month for the end year
+        Returns: True
+        '''
         if values['-eday-'] in range(1,(calendar.monthrange(values['-eyear-'], time.strptime(values['-emonth-'],'%B').tm_mon))[1]+1):
             #print('your dates work correctly')
             return True
@@ -99,12 +139,20 @@ def taskConfirmation():
     else:
         print('your start date is wrong')
         return False
+#main mainWindow creation for Py Scheduler
+mainWindow = gui.Window("Py Scheduler", layout, alpha_channel=0.7)
 
-window = gui.Window("Py Scheduler", layout, alpha_channel=0.7)
-
-#window event loop
+#mainWindow event loop
 while True:
-    event, values = window.read(timeout=100)
+    """Main mainWindow event loop
+    Reads mainWindow event values every 100ms
+    on event Exit or Window Closes: break loop and close program
+    on event Create: Open createWindow
+        on event Done: create a task using inputed data values from user
+        on event Cancel or Window Closes: stop task creation and close createWindow
+    on event Manage: View all tasks and allow Editing
+    """    
+    event, values = mainWindow.read(timeout=100)
     if event in ("Exit", gui.WIN_CLOSED):
         break
     if event == "Create":
@@ -134,7 +182,7 @@ while True:
         break
 
     #windup loop updates
-    window['-timer-'].update(time.strftime('%I:%M:%S %p', time.localtime(clockLoop())))
-    window['-date-'].update(time.strftime('%b %d %Y', time.localtime(clockLoop())))
+    mainWindow['-timer-'].update(time.strftime('%I:%M:%S %p', time.localtime(clockLoop())))
+    mainWindow['-date-'].update(time.strftime('%b %d %Y', time.localtime(clockLoop())))
 
-window.close()
+mainWindow.close()
