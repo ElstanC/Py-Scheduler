@@ -9,14 +9,14 @@ print("****Welcome To Python Scheduler****\n")
 
 #converts a list to string
 def listToString(s):  
-    '''Convert list s and return a string'''
+    """Convert list s and return a string"""
     str1 = " " 
     return (str1.join(s)) 
 
 
 #updates currentDate to the current date
 def currentDateUpdate():
-    '''Updates the currentDate to the Local datetime now function'''
+    """A function that updates the currentDate to the Local datetime now function."""
     currentDate = datetime.datetime.now()
     return currentDate
 
@@ -26,15 +26,17 @@ currentDate = currentDateUpdate()
 
 #main clock loop function
 def clockLoop():
-    '''
-    Main clock loop
+    """A function for the Main Clock Loop.
+    This will constantly update the current time and datetime objects
+    to the current local time
+    
     t : current time variable
 
     Returns
     -------
     t : the currently updated time
 
-    '''
+    """
     t = time.time()
     currentDateUpdate()
     compareLoop()
@@ -42,7 +44,7 @@ def clockLoop():
 
 #creates a new task and adds it to taskList
 def createTask(name, desc, startDate, endDate):
-    """Creates a new task.py object and adds it to taskList
+    """A function that creates a new task.py object and adds it to taskList.
 
     Args:
         name (str): name for the task
@@ -54,7 +56,7 @@ def createTask(name, desc, startDate, endDate):
 
 #loops through all tasks if timeCompare == true Deletes task
 def compareLoop():
-    """loops through all the tasks in taskList
+    """loops through all the tasks in taskList.
     if timeCompare() returns true then the end date has passed
     and the task from taskList will be removed
     """    
@@ -65,8 +67,7 @@ def compareLoop():
         
 #compares task end time to current time  
 def timeCompare(timeInput):
-    """Compares a task end time to the current time if the end date has passed
-    it will return true
+    """Compares a task end time to the current time if the end date has passed it will return true.
 
     Args:
         timeInput (datetime.obj): date time object input for comparison
@@ -95,7 +96,7 @@ gui.Button('Manage')]]
 
 #name and description buttons
 def deployCreateLayout():
-    """Layout for the Create Task Window
+    """Layout for the Create Task Window.
 
     Returns:
         pysimpleGuiLayout: layout
@@ -124,13 +125,13 @@ createWindow = gui.Window('Task Creation', deployCreateLayout())
 
 #checks if the days correspond with the correct month range 
 def taskConfirmation():
-    """if start day is in range of calendar month for the start year check the end day
+    """if start day is in range of calendar month for the start year check the end day.
     Returns: True
     """    
     if values['-sday-'] in range(1,(calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'],'%B').tm_mon))[1]+1):
-        '''if end day is in the range of calendar month for the end year
+        """if end day is in the range of calendar month for the end year
         Returns: True
-        '''
+        """
         if values['-eday-'] in range(1,(calendar.monthrange(values['-eyear-'], time.strptime(values['-emonth-'],'%B').tm_mon))[1]+1):
             #print('your dates work correctly')
             return True
