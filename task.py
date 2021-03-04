@@ -5,7 +5,7 @@ class Task:
     """A class that represents a Task.
     """    
     def __init__(self, name, desc, createdDate, startDate, endDate):
-        """A constructor for Tasks.
+        """A constructor that creates Tasks.
 
         Args:
             name (str): name of the task
@@ -34,7 +34,7 @@ class Task:
         '''Return the start date of the self obj as a string.'''
         return self.startDate.strftime('%Y-%m-%d %H:%M %Z')
     def end(self):
-        '''Returns the end date of the self obj as a string.'''
+        '''Return the end date of the self obj as a string.'''
         return self.endDate.strftime('%Y-%m-%d %H:%M %Z')    
 
 def timeFormat(input):
