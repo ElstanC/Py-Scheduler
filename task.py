@@ -2,8 +2,7 @@ import datetime
 import time
 taskList = []
 class Task:
-    """A class that represents a Task.
-    """    
+    """A class that represents a Task."""    
     def __init__(self, name, desc, createdDate, startDate, endDate):
         """A constructor that creates Tasks.
 
@@ -22,19 +21,19 @@ class Task:
     def __repr__(self):
         return f'Task name: {self.name} Description: {self.desc}Created Date: {self.created()} \nStart Date: {self.start()} End Date: {self.end()}'
     def getEnd(self):
-        '''Return the end date of the self obj.'''
+        """Return the end date of the self obj."""
         return self.endDate
     def getStart(self):
-        '''Return the Start Date of the self obj.'''
+        """Return the Start Date of the self obj."""
         return self.startDate
     def created(self):
-        '''Return the Created Date of the self obj as a string.'''
+        """Return the Created Date of the self obj as a string."""
         return time.strftime('%Y-%m-%d %H:%M %Z', time.localtime(self.createdDate))
     def start(self):
-        '''Return the start date of the self obj as a string.'''
+        """Return the start date of the self obj as a string."""
         return self.startDate.strftime('%Y-%m-%d %H:%M %Z')
     def end(self):
-        '''Return the end date of the self obj as a string.'''
+        """Return the end date of the self obj as a string."""
         return self.endDate.strftime('%Y-%m-%d %H:%M %Z')    
 
 def timeFormat(input):

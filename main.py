@@ -9,14 +9,14 @@ print("****Welcome To Python Scheduler****\n")
 
 #converts a list to string
 def listToString(s):  
-    """Convert list s and return a string"""
+    """Convert list s and return a string."""
     str1 = " " 
     return (str1.join(s)) 
 
 
 #updates currentDate to the current date
 def currentDateUpdate():
-    """A function that updates the currentDate to the Local datetime now function."""
+    """Updates the currentDate to the Local datetime now function."""
     currentDate = datetime.datetime.now()
     return currentDate
 
@@ -26,7 +26,7 @@ currentDate = currentDateUpdate()
 
 #main clock loop function
 def clockLoop():
-    """A function for the Main Clock Loop.
+    """A repeating loop for the Main Clock Loop.
     This will constantly update the current time and datetime objects
     to the current local time
     
@@ -44,7 +44,7 @@ def clockLoop():
 
 #creates a new task and adds it to taskList
 def createTask(name, desc, startDate, endDate):
-    """A function that creates a new task.py object and adds it to taskList.
+    """Create a new task.py object from args and add it to taskList.
 
     Args:
         name (str): name for the task
@@ -56,7 +56,7 @@ def createTask(name, desc, startDate, endDate):
 
 #loops through all tasks if timeCompare == true Deletes task
 def compareLoop():
-    """loops through all the tasks in taskList.
+    """Loop through all the tasks in taskList.
     if timeCompare() returns true then the end date has passed
     and the task from taskList will be removed
     """    
@@ -82,6 +82,7 @@ def timeCompare(timeInput):
 
 #prints all tasks
 def printTasks():
+    """A simple function that will print all the tasks in the taskList."""
     for item in task.taskList:
         print(item.__repr__()+"\n")
         
@@ -125,7 +126,7 @@ createWindow = gui.Window('Task Creation', deployCreateLayout())
 
 #checks if the days correspond with the correct month range 
 def taskConfirmation():
-    """if start day is in range of calendar month for the start year check the end day.
+    """If start day is in range of calendar month for the start year check the end day.
     Returns: True
     """    
     if values['-sday-'] in range(1,(calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'],'%B').tm_mon))[1]+1):
