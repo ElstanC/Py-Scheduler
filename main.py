@@ -89,9 +89,9 @@ def printTasks():
 
 #main layout constructor
 gui.theme('dark grey 11')
-layout = [[gui.Text('', size=(15,0), font=('Helvetica', 20), justification='center', key='-timer-')],
-[gui.Text('', size=(15,0), font=('Helvetica', 20), justification='center', key='-date-')],
-[gui.Text('',size=(4,0), justification= 'center'), gui.Button("Exit"), gui.Button('Create'),
+layout = [[gui.Text('', size=(15, 0), font=('Helvetica', 20), justification='center', key='-timer-')],
+[gui.Text('', size=(15, 0), font=('Helvetica', 20), justification='center', key='-date-')],
+[gui.Text('', size=(4, 0), justification= 'center'), gui.Button("Exit"), gui.Button('Create'),
 gui.Button('Manage')]]
 
 
@@ -102,23 +102,23 @@ def deployCreateLayout():
     Returns:
         pysimpleGuiLayout: layout
     """    
-    createLayout = [[gui.Text('Name:'), gui.Input(size=(20,1), key='-name-')],
-    [gui.Text('Desc: '), gui.Multiline(size=(47,4), key='-desc-')],
+    createLayout = [[gui.Text('Name:'), gui.Input(size=(20, 1), key='-name-')],
+    [gui.Text('Desc: '), gui.Multiline(size=(47, 4), key='-desc-')],
     #start Date buttons
-    [gui.Text('Start Date:'), gui.Spin(values=list(range(1,32)), initial_value=str.strip(time.strftime('%d').strip('0')), size=(5, 1), key='-sday-'),
-    gui.InputCombo(('January','February','March','April','May','June','July','August','September','November','December'), default_value=time.strftime('%B', time.localtime(t)), size=(10,1), key='-smonth-'),
-    gui.Spin(values=list(range(int(time.strftime('%Y')), int(time.strftime('%Y'))+20)), initial_value=time.strftime('%Y').strip('0'), size=(4, 1), key='-syear-'),gui.Text(':', size=(0,0)),
-    gui.Spin(values=list(range(0, 13)), initial_value=time.strftime('%I'), size=(2, 1), key='-shours-'),gui.Text(':', size=(0,0)),
+    [gui.Text('Start Date:'), gui.Spin(values=list(range(1, 32)), initial_value=str.strip(time.strftime('%d').strip('0')), size=(5, 1), key='-sday-'),
+    gui.InputCombo(('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'), default_value=time.strftime('%B', time.localtime(t)), size=(10, 1), key='-smonth-'),
+    gui.Spin(values=list(range(int(time.strftime('%Y')), int(time.strftime('%Y'))+20)), initial_value=time.strftime('%Y').strip('0'), size=(4, 1), key='-syear-'), gui.Text(':', size=(0, 0)),
+    gui.Spin(values=list(range(0, 13)), initial_value=time.strftime('%I'), size=(2, 1), key='-shours-'), gui.Text(':', size=(0, 0)),
     gui.Spin(values=list(range(0, 60)), initial_value=time.strftime('%M'), size=(2, 1), key='-sminutes-'),
-    gui.Spin(('AM','PM'), initial_value=time.strftime('%p'), size=(3, 1), key='-smer-')],
+    gui.Spin(('AM', 'PM'), initial_value=time.strftime('%p'), size=(3, 1), key='-smer-')],
     #End Date Buttons
-    [gui.Text('End Date: '),  gui.Spin(values=list(range(1,32)), initial_value=str.strip(time.strftime('%d').strip('0')), size=(5, 1), key='-eday-'),
-    gui.InputCombo(('January','February','March','April','May','June','July','August','September','November','December'), default_value=time.strftime('%B'), size=(10,1), key='-emonth-'),
-    gui.Spin(values=list(range(int(time.strftime('%Y')), int(time.strftime('%Y'))+20)), initial_value=time.strftime('%Y').strip('0'), size=(4, 1), key='-eyear-'),gui.Text(':', size=(0,0)),
-    gui.Spin(values=list(range(0, 13)), initial_value=time.strftime('%I'), size=(2, 1), key='-ehours-'),gui.Text(':', size=(0,0)),
+    [gui.Text('End Date: '),  gui.Spin(values=list(range(1, 32)), initial_value=str.strip(time.strftime('%d').strip('0')), size=(5, 1), key='-eday-'),
+    gui.InputCombo(('January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'), default_value=time.strftime('%B'), size=(10, 1), key='-emonth-'),
+    gui.Spin(values=list(range(int(time.strftime('%Y')), int(time.strftime('%Y'))+20)), initial_value=time.strftime('%Y').strip('0'), size=(4, 1), key='-eyear-'), gui.Text(':', size=(0, 0)),
+    gui.Spin(values=list(range(0, 13)), initial_value=time.strftime('%I'), size=(2, 1), key='-ehours-'), gui.Text(':', size=(0, 0)),
     gui.Spin(values=list(range(0, 60)), initial_value=time.strftime('%M'), size=(2, 1), key='-eminutes-'),
-    gui.Spin(('AM','PM'), initial_value=time.strftime('%p'), size=(3, 1), key='-emer-')],
-    [gui.Button("Cancel", pad=((20,20),(20,20)),size=(5,2)), gui.Button('Done', size=(5,2))]]
+    gui.Spin(('AM', 'PM'), initial_value=time.strftime('%p'), size=(3, 1), key='-emer-')],
+    [gui.Button("Cancel", pad=((20, 20),(20, 20)),size=(5, 2)), gui.Button('Done', size=(5, 2))]]
     return createLayout
 
 #Task creation createWindow
@@ -129,11 +129,11 @@ def taskConfirmation():
     """If start day is in range of calendar month for the start year check the end day.
     Returns: True
     """    
-    if values['-sday-'] in range(1,(calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'],'%B').tm_mon))[1]+1):
+    if values['-sday-'] in range(1, (calendar.monthrange(values['-syear-'], time.strptime(values['-smonth-'], '%B').tm_mon))[1]+1):
         """if end day is in the range of calendar month for the end year
         Returns: True
         """
-        if values['-eday-'] in range(1,(calendar.monthrange(values['-eyear-'], time.strptime(values['-emonth-'],'%B').tm_mon))[1]+1):
+        if values['-eday-'] in range(1, (calendar.monthrange(values['-eyear-'], time.strptime(values['-emonth-'], '%B').tm_mon))[1]+1):
             #print('your dates work correctly')
             return True
         else:
@@ -166,12 +166,12 @@ while True:
                 break
             if event == "Done":
                 if taskConfirmation():
-                    sdate = str(values['-syear-']),values['-smonth-'],str(values['-sday-']),str(values['-shours-']),str(values['-sminutes-']),str(values['-smer-'])
+                    sdate = str(values['-syear-']), values['-smonth-'], str(values['-sday-']), str(values['-shours-']), str(values['-sminutes-']), str(values['-smer-'])
                     sdateobj = datetime.datetime.strptime(listToString(sdate), '%Y %B %d %I %M %p')
-                    edate = str(values['-eyear-']),values['-emonth-'],str(values['-eday-']),str(values['-ehours-']),str(values['-eminutes-']),str(values['-emer-'])
+                    edate = str(values['-eyear-']), values['-emonth-'], str(values['-eday-']), str(values['-ehours-']), str(values['-eminutes-']), str(values['-emer-'])
                     edateobj = datetime.datetime.strptime(listToString(edate), '%Y %B %d %I %M %p')
-                    createTask(values['-name-'],values['-desc-'],sdateobj,edateobj)
-                    print('New Task:', values['-name-'],'Created', 'Start: ', sdateobj.strftime('%Y-%m-%d %H:%M%p %Z'), 'End: ', edateobj.strftime('%Y-%m-%d %H:%M%p %Z'))
+                    createTask(values['-name-'], values['-desc-'], sdateobj, edateobj)
+                    print('New Task:', values['-name-'], 'Created', 'Start: ', sdateobj.strftime('%Y-%m-%d %H:%M%p %Z'), 'End: ', edateobj.strftime('%Y-%m-%d %H:%M%p %Z'))
                     
                     createWindow.close()
                     createWindow = gui.Window('Task Creation', deployCreateLayout())

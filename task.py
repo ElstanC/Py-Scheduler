@@ -2,7 +2,8 @@ import datetime
 import time
 taskList = []
 class Task:
-    """A class that represents a Task."""    
+    """A class that represents a Task."""
+
     def __init__(self, name, desc, createdDate, startDate, endDate):
         """Constructor for tasks.
 
