@@ -171,7 +171,7 @@ while True:
                     edate = str(values['-eyear-']), values['-emonth-'], str(values['-eday-']), str(values['-ehours-']), str(values['-eminutes-']), str(values['-emer-'])
                     edateobj = datetime.datetime.strptime(listToString(edate), '%Y %B %d %I %M %p')
                     createTask(values['-name-'], values['-desc-'], sdateobj, edateobj)
-                    print('New Task:', values['-name-'], 'Created', 'Start: ', sdateobj.strftime('%Y-%m-%d %H:%M%p %Z'), 'End: ', edateobj.strftime('%Y-%m-%d %H:%M%p %Z'))
+                    print('New Task: ', values['-name-'], 'Created', 'Start: ', sdateobj.strftime('%Y-%m-%d %H:%M%p %Z'), 'End: ', edateobj.strftime('%Y-%m-%d %H:%M%p %Z'))
                     
                     createWindow.close()
                     createWindow = gui.Window('Task Creation', deployCreateLayout())
